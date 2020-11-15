@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1035122298408",
+    "firebase_url": "https://stadiongo.firebaseio.com",
+    "project_id": "stadiongo",
+    "storage_bucket": "stadiongo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035122298408:android:c64dd3cf0e0f43361d2f1d",
+        "android_client_info": {
+          "package_name": "stadion_go_3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035122298408-f7j8qu9b956f2e1a4ue7q30jccsjcvb6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyF8vC08Nfg5qVlasU0yg1RBMSE2V0IlQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035122298408-f7j8qu9b956f2e1a4ue7q30jccsjcvb6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035122298408:android:6877f412b8a9478b1d2f1d",
+        "android_client_info": {
+          "package_name": "com.example.stadion_go_3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035122298408-f7j8qu9b956f2e1a4ue7q30jccsjcvb6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyF8vC08Nfg5qVlasU0yg1RBMSE2V0IlQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035122298408-f7j8qu9b956f2e1a4ue7q30jccsjcvb6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
