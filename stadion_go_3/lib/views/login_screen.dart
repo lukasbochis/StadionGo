@@ -85,6 +85,7 @@ class _LoginViewState extends State<Login>{
               onPressed: () async {
                 try{
                   await _firebaseAuth.sendPasswordResetEmail(email: _emailController.text);
+                  Toast.show("Passwort reset email was send", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM, backgroundColor: Colors.green);
                 }
                 catch(e)
                 {
