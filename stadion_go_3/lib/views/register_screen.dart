@@ -26,22 +26,22 @@ class _RegisterViewState extends State<Register> {
     final usernameField = TextFormField(
       controller: _usernameController,
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      cursorColor: Colors.white, //Beim drücken auf das Feld, den Cursor weis färben
+      cursorColor: Colors.black, //Beim drücken auf das Feld, den Cursor weis färben
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder( //Beim drücken auf das Feld, die Zeile unten weis färben
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         hintText: "Alexander Hrazdera",
         labelText: "Username",
         labelStyle: TextStyle( //Beim drücken auf das Feld, das Label weis färben
-          color: Colors.white,
+          color: Colors.black,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
         ),
       ),
     );
@@ -50,22 +50,22 @@ class _RegisterViewState extends State<Register> {
       controller: _emailController,
       keyboardType: TextInputType.emailAddress, //Um eine bestimmte Tastatur mit einem @ Zeichen zu bekommen
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      cursorColor: Colors.white, //Beim drücken auf das Feld, den Cursor weis färben
+      cursorColor: Colors.black, //Beim drücken auf das Feld, den Cursor weis färben
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder( //Beim drücken auf das Feld, die Zeile unten weis färben
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         hintText: "something@example.com",
         labelText: "Email",
         labelStyle: TextStyle( //Beim drücken auf das Feld, das Label weis färben
-          color: Colors.white,
+          color: Colors.black,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
         ),
       ),
     );
@@ -73,23 +73,23 @@ class _RegisterViewState extends State<Register> {
     final passwordField = TextFormField(
       controller: _passwordController,
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      cursorColor: Colors.white, //Beim drücken auf das Feld, den Cursor weis färben
+      cursorColor: Colors.black, //Beim drücken auf das Feld, den Cursor weis färben
       obscureText: true, //Eingabetext in Punkte anzeigen
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder( //Beim drücken auf das Feld, die Zeile unten weis färben
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         hintText: "password",
         labelText: "Password",
         labelStyle: TextStyle( //Beim drücken auf das Feld, das Label weis färben
-          color: Colors.white,
+          color: Colors.black,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
         ),
       ),
     );
@@ -97,23 +97,23 @@ class _RegisterViewState extends State<Register> {
     final repasswordField = TextFormField(
       controller: _repasswordController,
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      cursorColor: Colors.white, //Beim drücken auf das Feld, den Cursor weis färben
+      cursorColor: Colors.black, //Beim drücken auf das Feld, den Cursor weis färben
       obscureText: true, //Eingabetext in Punkte anzeigen
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder( //Beim drücken auf das Feld, die Zeile unten weis färben
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         hintText: "password",
         labelText: "Re-enter Password",
         labelStyle: TextStyle( //Beim drücken auf das Feld, das Label weis färben
-          color: Colors.white,
+          color: Colors.black,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
         ),
       ),
     );
@@ -184,7 +184,7 @@ class _RegisterViewState extends State<Register> {
             Text(
               "Already have an account?",
               style: Theme.of(context).textTheme.subtitle1.copyWith(
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
             MaterialButton(
@@ -194,7 +194,7 @@ class _RegisterViewState extends State<Register> {
               child: Text(
                 "Login",
                 style: Theme.of(context).textTheme.subtitle1.copyWith(
-                  color: Colors.white,
+                  color: Colors.black,
                   decoration: TextDecoration.underline,
                 ),
               ),

@@ -14,11 +14,12 @@ class MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
+      title: 'StadionGo',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Material App Bar'),
+          title: Text('StadionGo'),
         ),
+        backgroundColor: Color(0xFF00BCD4),
         body: Center(child: NfcScan()),
       ),
     );
@@ -38,7 +39,7 @@ class _NfcScanState extends State<NfcScan> {
   @override
   initState() {
     super.initState();
-    writerController.text = 'Flutter NFC Scan';
+    writerController.text = 'Put in stadion name';
     FlutterNfcReader.onTagDiscovered().listen((onData) {
       print(onData.id);
       print(onData.content);

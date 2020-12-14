@@ -26,22 +26,22 @@ class _LoginViewState extends State<Login>{
       controller: _emailController,
       keyboardType: TextInputType.emailAddress, //Um eine bestimmte Tastatur mit einem @ Zeichen zu bekommen
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      cursorColor: Colors.white, //Beim drücken auf das Feld, den Cursor weis färben
+      cursorColor: Colors.black, //Beim drücken auf das Feld, den Cursor weis färben
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder( //Beim drücken auf das Feld, die Zeile unten weis färben
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         hintText: "something@example.com",
         labelText: "Email",
         labelStyle: TextStyle( //Beim drücken auf das Feld, das Label weis färben
-          color: Colors.white,
+          color: Colors.black,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
         ),
       ),
     );
@@ -51,23 +51,23 @@ class _LoginViewState extends State<Login>{
         TextFormField(
           controller: _passwordController,
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
           ),
-          cursorColor: Colors.white, //Beim drücken auf das Feld, den Cursor weis färben
+          cursorColor: Colors.black, //Beim drücken auf das Feld, den Cursor weis färben
           obscureText: true, //Eingabetext in Punkte anzeigen
           decoration: InputDecoration(
             focusedBorder: UnderlineInputBorder( //Beim drücken auf das Feld, die Zeile unten weis färben
               borderSide: BorderSide(
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
             hintText: "password",
             labelText: "Password",
             labelStyle: TextStyle( //Beim drücken auf das Feld, das Label weis färben
-              color: Colors.white,
+              color: Colors.black,
             ),
             hintStyle: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ),
@@ -80,7 +80,7 @@ class _LoginViewState extends State<Login>{
             MaterialButton(
               child: Text(
                 "Forgot Password?",
-                style: Theme.of(context).textTheme.caption.copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black),
               ),
               onPressed: () async {
                 try{
@@ -160,7 +160,7 @@ class _LoginViewState extends State<Login>{
             Text(
               "Not a member?",
               style: Theme.of(context).textTheme.subtitle1.copyWith(
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
             MaterialButton(
@@ -170,7 +170,7 @@ class _LoginViewState extends State<Login>{
               child: Text(
                 "Sign Up",
                 style: Theme.of(context).textTheme.subtitle1.copyWith(
-                  color: Colors.white,
+                  color: Colors.black,
                   decoration: TextDecoration.underline,
                 ),
               ),

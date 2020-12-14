@@ -33,6 +33,19 @@ class OpeningView extends StatelessWidget{
       ),
     );
 
+    final titleField = Material(
+      color: Color(0xFF00BCD4),
+      child: Text(
+        "StadionGo",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontSize: 40.0,
+            color: Colors.black,
+            fontWeight: FontWeight.bold
+        )
+      ),
+    );
+
     final loginButton = Material(
       elevation: 5.0, //Schatten des Button Z Koordinate
       borderRadius: BorderRadius.circular(25.0),
@@ -76,6 +89,7 @@ class OpeningView extends StatelessWidget{
               Padding(padding: EdgeInsets.only(top: 50),
                 child: logo,
               ),
+              titleField,
               buttons,
             ],
           ),
