@@ -13,7 +13,7 @@ class MenuScreenState extends State<MenuScreen> {
   MenuScreenState();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    /*return MaterialApp(
       title: 'StadionGo',
       home: Scaffold(
         appBar: AppBar(
@@ -21,6 +21,62 @@ class MenuScreenState extends State<MenuScreen> {
         ),
         backgroundColor: Color(0xFF00BCD4),
         body: Center(child: NfcScan()),
+      ),
+    );*/
+    return MaterialApp(
+        title: 'StadionGo',
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home: DefaultTabController(length: 3, child: Scaffold(
+            appBar: AppBar(
+              bottom: TabBar(tabs: [
+                Tab(text: 'MyGames',),
+                Tab(text: 'Football',),
+                Tab(text: 'Hockey',),
+              ],),
+            ),
+          body: CardWidget(),
+        ),),
+    );
+  }
+}
+
+class CardWidget extends StatelessWidget {
+  CardWidget({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+      child: Container(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            /*const ListTile(
+              leading: Icon(Icons.add_circle_sharp),
+              title: Text('FC Barcelona vs Real Madrid'),
+              subtitle: Text('01.01.2021, 17:00'),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                TextButton(onPressed: null, child: const Text('Register for game'))
+              ],
+            )*/
+            Expanded(
+                child: ListView.builder(
+                  itemBuilder: (context, index){
+                    return Container(
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      height: 220,
+                      width: double.maxFinite,
+                      child: Card()
+                    );
+                  },
+                )
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -78,4 +134,5 @@ class _NfcScanState extends State<NfcScan> {
       ],
     );
   }
+
 }
