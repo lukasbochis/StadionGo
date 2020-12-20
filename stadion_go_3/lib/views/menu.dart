@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_nfc_reader/flutter_nfc_reader.dart';
 
+import 'avgames.dart';
+import 'mygames.dart';
+import 'profile.dart';
+
 class MenuScreen extends StatefulWidget{
   MenuScreen();
 
@@ -10,6 +14,8 @@ class MenuScreen extends StatefulWidget{
 }
 
 class MenuScreenState extends State<MenuScreen> {
+
+
   MenuScreenState();
   @override
   Widget build(BuildContext context) {
@@ -30,11 +36,26 @@ class MenuScreenState extends State<MenuScreen> {
             appBar: AppBar(
               bottom: TabBar(tabs: [
                 Tab(text: 'MyGames',),
-                Tab(text: 'Football',),
-                Tab(text: 'Hockey',),
+                Tab(text: 'Available',),
+                Tab(text: 'Profile',),
               ],),
+              actions: <Widget>[new Icon(Icons.logout)],
             ),
-          body: CardWidget(),
+          body: TabBarView(
+            children: <Widget>[
+              new MyGames(),
+              new AvGames(),
+              new Profile(),
+            ],
+          ),
+          floatingActionButton: new FloatingActionButton(
+            backgroundColor: Colors.red,
+            child: new Icon(Icons.add),
+            onPressed: () { FlutterNfcReader.onTagDiscovered().listen((onData) {
+              print(onData.content);
+            });
+            },
+          ),
         ),),
     );
   }
@@ -52,7 +73,7 @@ class CardWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            /*const ListTile(
+            const ListTile(
               leading: Icon(Icons.add_circle_sharp),
               title: Text('FC Barcelona vs Real Madrid'),
               subtitle: Text('01.01.2021, 17:00'),
@@ -62,8 +83,8 @@ class CardWidget extends StatelessWidget {
               children: <Widget>[
                 TextButton(onPressed: null, child: const Text('Register for game'))
               ],
-            )*/
-            Expanded(
+            ),
+            /*Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index){
                     return Container(
@@ -74,7 +95,7 @@ class CardWidget extends StatelessWidget {
                     );
                   },
                 )
-            ),
+            ),*/
           ],
         ),
       ),
