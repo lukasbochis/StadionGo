@@ -42,7 +42,7 @@ class _NfcScanState extends State<NfcScan> {
     writerController.text = 'Put in stadion name';
     FlutterNfcReader.onTagDiscovered().listen((onData) {
       print(onData.id);
-      print(onData.content);
+      print(" data "+onData.content.);
     });
   }
 
