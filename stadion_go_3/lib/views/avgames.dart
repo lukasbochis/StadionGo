@@ -1,3 +1,4 @@
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +26,14 @@ class AvGames extends StatelessWidget {
                       children: <Widget>[
                         TextButton(
                           child: const Text('BUY TICKET'),
-                          onPressed: () {
+                          onPressed: () async {
                             //TODO: Buy ticket in database, cloud function
+                            HttpsCallable callable = await FirebaseFunctions
+                                .instanceFor(region: 'us-central1')
+                                .httpsCallable('getAllGames');
 
+                            final results = await callable();
+                            print(results.data);
                           },
                         ),
                         const SizedBox(width: 8)
