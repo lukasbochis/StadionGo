@@ -1,3 +1,4 @@
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_nfc_reader/flutter_nfc_reader.dart';
@@ -51,12 +52,71 @@ class MenuScreenState extends State<MenuScreen> {
           floatingActionButton: new FloatingActionButton(
             backgroundColor: Colors.red,
             child: new Icon(Icons.add),
-            onPressed: () { FlutterNfcReader.onTagDiscovered().listen((onData) {
+            //Falls ein Tag entdeckt wird, entsteht ein Ton und gleichzeitig wird die Überprüfung gestartet.
+            onPressed: () { FlutterNfcReader.onTagDiscovered().listen((onData) async {
               print(onData.content);
+              String content = onData.content;
+              content = onData.content.toString().split('anil00')[1];
+              print("Test100: " + content);
+              List<String> datas = content.split(';');
+              //datas[0] = Spiel ID
+             //getGameById
+              HttpsCallable callable = FirebaseFunctions.instance.httpsCallable(
+                  'getGameById',
+                  options: HttpsCallableOptions(timeout: Duration(seconds: 5)));
+
+              try {
+                final HttpsCallableResult result = await callable.call(
+                  <String, dynamic>{
+                    'gameId': datas[0],
+                  },
+                );
+                print("Game: " + result.data['response']);
+              } catch (e) {
+                print('caught generic exception');
+                print(e);
+              }
+
+              // datas[1] = Entrytime
+              var parsedDate = DateTime.parse(datas[1]);
+
+              // Wenn jetzige Zeit vor einlass ist oder 4h nach einlass ist, wird eine Fehlermeldung angezeigt.
+              if(parsedDate.isBefore(DateTime.now()) || parsedDate.isAfter(DateTime.now().add(new Duration(hours: 4)))){
+                _showMyDialog("The barrier are opening... Welcome and Have Fun at watching. ");
+              }else {
+                _showMyDialog("We are sorry, but you are not able to enter. Look at the entry");
+              }
             });
             },
           ),
         ),),
+    );
+  }
+
+  Future<void> _showMyDialog(String message) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Stadion Go'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(message),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
