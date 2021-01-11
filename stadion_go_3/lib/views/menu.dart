@@ -2,10 +2,13 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_nfc_reader/flutter_nfc_reader.dart';
-
+import 'package:http/http.dart' as http;
+import 'package:stadion_go_3/views/gameModel.dart';
+import 'Game.dart';
 import 'avgames.dart';
 import 'mygames.dart';
 import 'profile.dart';
+import 'dart:convert';
 
 class MenuScreen extends StatefulWidget{
   MenuScreen();
@@ -41,6 +44,7 @@ class MenuScreenState extends State<MenuScreen> {
                 Tab(text: 'Profile',),
               ],),
               actions: <Widget>[new Icon(Icons.logout)],
+              title: Text('test'),
             ),
           body: TabBarView(
             children: <Widget>[
@@ -61,30 +65,47 @@ class MenuScreenState extends State<MenuScreen> {
               List<String> datas = content.split(';');
               //datas[0] = Spiel ID
              //getGameById
-              HttpsCallable callable = FirebaseFunctions.instance.httpsCallable(
-                  'getGameById',
-                  options: HttpsCallableOptions(timeout: Duration(seconds: 5)));
+              Game game = null;
+              try{
+                final response = await http.get("https://us-central1-stadiongo.cloudfunctions.net/reqGameById?gameId="+datas[0]);
+                var res = json.decode(response.body);
+                res = res["_fieldsProto"];
 
-              try {
-                final HttpsCallableResult result = await callable.call(
-                  <String, dynamic>{
-                    'gameId': datas[0],
-                  },
+                //Game game = Game.fromJson(res["_fieldsProto"]);
+                game = Game(
+                  res["category"]["stringValue"],
+                    res["team2"]["stringValue"],
+                    res["team1"]["stringValue"],
+                    res["entry"]["stringValue"],
+                    res["date"]["stringValue"],
+                    res["location"]["stringValue"]
                 );
-                print("Game: " + result.data['response']);
-              } catch (e) {
-                print('caught generic exception');
-                print(e);
-              }
 
+                print("Game: " + game.team2 + " : " + game.team1);
+              }
+              catch(e){
+                print("es is a aundara fehla");
+                print(e.toString());
+              }
               // datas[1] = Entrytime
               var parsedDate = DateTime.parse(datas[1]);
+              print("Game"+game.toString());
+
+              bool exist = false;
+
+              for(int i = 0;i < dummyGames.length; i++)
+                if(dummyGames[i].id == datas[0]){
+                  print(dummyGames[i].id + " dummy and else: " + datas[0]);
+                  exist = true;
+                }
+
+
 
               // Wenn jetzige Zeit vor einlass ist oder 4h nach einlass ist, wird eine Fehlermeldung angezeigt.
-              if(parsedDate.isBefore(DateTime.now()) || parsedDate.isAfter(DateTime.now().add(new Duration(hours: 4)))){
+              if(game != null && exist && (parsedDate.isBefore(DateTime.now()) || parsedDate.isAfter(DateTime.now().add(new Duration(hours: 4))))){
                 _showMyDialog("The barrier are opening... Welcome and Have Fun at watching. ");
               }else {
-                _showMyDialog("We are sorry, but you are not able to enter. Look at the entry");
+                _showMyDialog("We are sorry, but you are not able to enter. Look at the entry time");
               }
             });
             },
@@ -93,7 +114,7 @@ class MenuScreenState extends State<MenuScreen> {
     );
   }
 
-  Future<void> _showMyDialog(String message) async {
+  Future<void> _showMyDialog(String message) {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!

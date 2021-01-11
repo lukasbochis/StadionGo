@@ -1,10 +1,15 @@
+import 'dart:convert';
+
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stadion_go_3/views/gameModel.dart';
+import 'package:stadion_go_3/views/mygames.dart';
 
 class AvGames extends StatelessWidget {
+  int gameId;
+
   @override
   Widget build(BuildContext context) {
     return new ListView.builder(
@@ -33,7 +38,21 @@ class AvGames extends StatelessWidget {
                                 .httpsCallable('getAllGames');
 
                             final results = await callable();
-                            print(results.data);
+
+                            final g = results.data['games'];
+                            final ga = "" + g + "";
+                            List<dynamic> games = json.decode(ga);
+
+                            print(games[i]['id']);
+                            dummyGames.add(GameModel(
+                              id: games[i]['id'],
+                              team1: games[i]['data']['team1'],
+                              team2: games[i]['data']['team2'],
+                              location: games[i]['data']['location'],
+                              entry: games[i]['data']['entry'],
+                              category: games[i]['data']['category'],
+                              date: games[i]['data']['date'],
+                            ));
                           },
                         ),
                         const SizedBox(width: 8)
