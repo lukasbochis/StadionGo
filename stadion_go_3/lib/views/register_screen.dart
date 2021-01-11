@@ -108,7 +108,7 @@ class _RegisterViewState extends State<Register> {
           ),
         ),
         hintText: "password",
-        labelText: "Re-enter Password",
+        //labelText: "Re-enter Password",
         labelStyle: TextStyle( //Beim drücken auf das Feld, das Label weis färben
           color: Colors.black,
         ),
@@ -126,7 +126,7 @@ class _RegisterViewState extends State<Register> {
             usernameField,
             emailField,
             passwordField,
-            repasswordField,
+            //repasswordField,
           ],
         )
     );
@@ -149,7 +149,7 @@ class _RegisterViewState extends State<Register> {
           ),
           onPressed: () async{
             try{
-              UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+              UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword( //Firebase
                   email: _emailController.text,
                   password: _passwordController.text
               );

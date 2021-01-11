@@ -36,13 +36,13 @@ class OpeningView extends StatelessWidget{
     final titleField = Material(
       color: Color(0xFF00BCD4),
       child: Text(
-        "StadionGo",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            fontSize: 40.0,
-            color: Colors.black,
-            fontWeight: FontWeight.bold
-        )
+          "StadionGo",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 40.0,
+              color: Colors.black,
+              fontWeight: FontWeight.bold
+          )
       ),
     );
 

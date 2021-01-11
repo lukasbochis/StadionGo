@@ -127,7 +127,7 @@ class _LoginViewState extends State<Login>{
           ),
           onPressed: () async{
             try{
-              UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+              UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword( //Firebase
                   email: _emailController.text,
                   password: _passwordController.text
               );
